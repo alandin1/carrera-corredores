@@ -23,5 +23,34 @@ class Caballo {
         return this.avance += 0
       }
     }
-    
-    
+class PosiCarrera {
+    constructor(caballos = [], meta = 100) {
+        this.cab = caballos
+        this.meta = meta
+        }
+
+    correr() {
+        let termino = false
+        let recorrido = []
+        while (termino === false) {
+        for (let i = 0; i < this.cab.length; i++) {
+              recorrido[i] = this.cab[i].turno()
+            if (recorrido[i]!==0){
+            console.log(this.cab[i].nombre, " va en la posición: ", recorrido[i])
+              }
+            if(recorrido[i]>=this.meta){
+            termino = true
+            console.log("El caballo que ganó fue:")
+            console.log(this.cab[i].nombre)
+            return
+            }
+        }
+        }
+    }
+}
+    let C1 = new Caballo("Caballo #1")
+    let C2 = new Caballo("Caballo #2")
+    let C3 = new Caballo("Caballo #3")
+      
+    let cabComp = [C1, C2, C3]
+      let carrera = new PosiCarrera(cabComp, 100).correr()
